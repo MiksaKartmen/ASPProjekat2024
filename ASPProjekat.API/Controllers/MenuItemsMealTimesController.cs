@@ -1,5 +1,6 @@
 ﻿using ASPProjekat.Application.DTO;
 using ASPProjekat.Application.DTO.Insert;
+using ASPProjekat.Application.DTO.Updates;
 using ASPProjekat.Application.UseCases.Commands;
 using ASPProjekat.Implementation;
 using Microsoft.AspNetCore.Authorization;
@@ -30,9 +31,12 @@ namespace ASPProjekat.API.Controllers
 
         // PUT api/<MenuItemsMealTimesController>/5
         [HttpPut("{id}")]
-        
-        public void Put(int id, [FromBody] string value)
+        [Authorize]
+        public IActionResult Put(int id, [FromBody] UpdateMenuItemMealTimeDto dto, IUpdateMenuItemMealTimeCommand command)
         {
+            dto.Id = id;
+            _handler.HandleCommand(command, dto);
+            return StatusCode(204);
         }
 
         // DELETE api/<MenuItemsMealTimesController>/5

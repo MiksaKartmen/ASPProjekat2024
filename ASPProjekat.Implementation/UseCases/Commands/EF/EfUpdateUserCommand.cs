@@ -20,7 +20,7 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
             _validator = validator;
         }
 
-        public int Id => 29;
+        public int Id => 57;
 
         public string Name => "Update user";
 

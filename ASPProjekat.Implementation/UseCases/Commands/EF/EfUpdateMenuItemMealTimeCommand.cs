@@ -1,6 +1,8 @@
 ﻿using ASPProjekat.Application.DTO.Updates;
 using ASPProjekat.Application.UseCases.Commands;
 using ASPProjekat.Domain;
+using ASPProjekat.Implementation.Validators;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,10 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
 {
     public class EfUpdateMenuItemMealTimeCommand : EfUseCase, IUpdateMenuItemMealTimeCommand
     {
-        public EfUpdateMenuItemMealTimeCommand(ASPContext context) : base(context)
+        private readonly UpdateMenuItemMealTimeDtoValidator _validator;
+        public EfUpdateMenuItemMealTimeCommand(ASPContext context, UpdateMenuItemMealTimeDtoValidator validator) : base(context)
         {
+            _validator = validator;
         }
 
         public int Id => 47;
@@ -23,6 +27,7 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
 
         public void Execute(UpdateMenuItemMealTimeDto obj)
         {
+            _validator.ValidateAndThrow(obj);
             var menuItemMealTime = Context.MenuItemMealTimes.Find(obj.Id);
 
             menuItemMealTime.MenuItemId = obj.MenuItemId;

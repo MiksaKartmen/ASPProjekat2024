@@ -1,10 +1,12 @@
 ﻿using ASPProjekat.Application;
 using ASPProjekat.Application.Logging;
 using ASPProjekat.Application.UseCases;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,13 +17,13 @@ namespace ASPProjekat.Implementation
         private readonly IUserApplication _user;
         private readonly IUseCaseLogger _logger;
         private readonly IExceptionLogger _exception;
-
-        public UseCaseHandler(IUserApplication user, IUseCaseLogger logger, IExceptionLogger exception)
+        private readonly IHttpContextAccessor _contextAccessor;
+        public UseCaseHandler(IHttpContextAccessor httpContextAccessor, IUserApplication user, IUseCaseLogger logger, IExceptionLogger exception)
         {
             _logger = logger;
             _user = user;
             _exception = exception;
-
+            _contextAccessor = httpContextAccessor;
         }
 
 
@@ -69,8 +71,8 @@ namespace ASPProjekat.Implementation
         }
         private void HandleCrossCuttingConcerns(IUseCase useCase, object data)
         {
-
-            if (!_user.AllowedUseCases.Contains(useCase.Id))
+            var httpMethod = _contextAccessor.HttpContext.Request.Method;
+            if (httpMethod != HttpMethods.Get && !_user.AllowedUseCases.Contains(useCase.Id))
             {
                 throw new UnauthorizedAccessException();
             }

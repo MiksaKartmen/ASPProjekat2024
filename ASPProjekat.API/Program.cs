@@ -17,6 +17,8 @@ builder.Configuration.Bind(settings);
 
 builder.Services.AddSingleton(settings.Jwt);
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,7 +32,7 @@ builder.Services.AddUseCases();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<IToken, InMemoryToken>();
 
-//builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 builder.Services.AddTransient<IUserApplicationCreating>(x =>
 {

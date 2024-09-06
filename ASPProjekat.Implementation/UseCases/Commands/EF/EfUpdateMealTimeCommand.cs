@@ -20,7 +20,7 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
             _validator = validator;
         }
 
-        public int Id => 21;
+        public int Id => 56;
 
         public string Name => "Update meal time";
 

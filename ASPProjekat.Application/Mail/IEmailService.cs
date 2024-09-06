@@ -37,6 +37,7 @@ namespace ASPProjekat.Application.Mail
                     client.Credentials = new NetworkCredential(_smtpUser, _smtpPass);
                     client.EnableSsl = true;
 
+
                     var mailMessage = new MailMessage
                     {
                         From = new MailAddress(_smtpUser),

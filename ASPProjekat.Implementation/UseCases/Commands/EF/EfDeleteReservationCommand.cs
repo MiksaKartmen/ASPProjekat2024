@@ -11,28 +11,26 @@ using System.Threading.Tasks;
 
 namespace ASPProjekat.Implementation.UseCases.Commands.EF
 {
-    public class EfDeleteGalleryCommand : EfUseCase, IDeleteGalleryCommand
+    public class EfDeleteReservationCommand : EfUseCase, IDeleteReservationCommand
     {
-        private readonly DeleteGalleryDtoValidator _validator;
-        public EfDeleteGalleryCommand(ASPContext context, DeleteGalleryDtoValidator validator) : base(context)
+        private readonly DeleteReservationDtoValidator _validator;
+
+        public EfDeleteReservationCommand(ASPContext context, DeleteReservationDtoValidator validator) : base(context)
         {
             _validator = validator;
         }
 
-        public int Id => 55;
+        public int Id => 52;
 
-        public string Name => "Delete gallery";
+        public string Name => "Delete reservation";
 
-        public string Description => "Delete gallery";
+        public string Description => "Delete reservation";
 
         public void Execute(DeleteDto obj)
         {
             _validator.ValidateAndThrow(obj);
-            var gallery = Context.Galleries.Find(obj.Id);
-
-            gallery.GalleryImages.Clear();
-
-            Context.Galleries.Remove(gallery);
+            var reservation = Context.Reservations.Find(obj.Id);
+            Context.Reservations.Remove(reservation);
             Context.SaveChanges();
         }
     }

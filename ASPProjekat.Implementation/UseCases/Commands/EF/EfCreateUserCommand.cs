@@ -44,16 +44,46 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
                 RoleId = obj.RoleId,
                 UseCases = new List<UserUseCase>()
                 {
-                    new UserUseCase { UseCaseId = 1 },
+                    new UserUseCase { UseCaseId = 2 },
                     new UserUseCase { UseCaseId = 4 },
+                    new UserUseCase { UseCaseId = 5 },
+                    new UserUseCase { UseCaseId = 9 },
+                    new UserUseCase { UseCaseId = 10 },
+                    new UserUseCase { UseCaseId = 11 },
+                    new UserUseCase { UseCaseId = 12 },
                     new UserUseCase { UseCaseId = 13 },
-                    new UserUseCase { UseCaseId = 14 },
                     new UserUseCase { UseCaseId = 15 },
-                    new UserUseCase { UseCaseId = 18 },
-                    new UserUseCase { UseCaseId = 20 },
-                    new UserUseCase { UseCaseId = 22 },
+                    new UserUseCase { UseCaseId = 16 },
+                    new UserUseCase { UseCaseId = 17 },
+                    new UserUseCase { UseCaseId = 21 },
+                    new UserUseCase { UseCaseId = 23 },
                     new UserUseCase { UseCaseId = 24 },
+                    new UserUseCase { UseCaseId = 25 },
                     new UserUseCase { UseCaseId = 26 },
+                    new UserUseCase { UseCaseId = 27 },
+                    new UserUseCase { UseCaseId = 28 },
+                    new UserUseCase { UseCaseId = 29 },
+                    new UserUseCase { UseCaseId = 31 },
+                    new UserUseCase { UseCaseId = 32 },
+                    new UserUseCase { UseCaseId = 34 },
+                    new UserUseCase { UseCaseId = 35 },
+                    new UserUseCase { UseCaseId = 36 },
+                    new UserUseCase { UseCaseId = 38 },
+                    new UserUseCase { UseCaseId = 39 },
+                    new UserUseCase { UseCaseId = 40 },
+                    new UserUseCase { UseCaseId = 43 },
+                    new UserUseCase { UseCaseId = 42 },
+                    new UserUseCase { UseCaseId = 45 },
+                    new UserUseCase { UseCaseId = 46 },
+                    new UserUseCase { UseCaseId = 47 },
+                    new UserUseCase { UseCaseId = 52 },
+                    new UserUseCase { UseCaseId = 53 },
+                    new UserUseCase { UseCaseId = 54 },
+                    new UserUseCase { UseCaseId = 55 },
+                    new UserUseCase { UseCaseId = 56 },
+                    new UserUseCase { UseCaseId = 57 },
+                    new UserUseCase { UseCaseId = 59 },
+
 
                 },
             };
@@ -63,7 +93,7 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
             try
             {
                 var emailSubject = "Welcome to AspProjekat2024!";
-                var emailBody = $"Dear {user.Name},\n\nThank you for registering with us.\n\nBest regards,\nAspProjekat2024 Team";
+                var emailBody = $"Dear {user.Name},\n\nThank you for registering with us.\n\nBest regards,\nAspProjekat Team";
                 _emailService.SendEmailAsync(user.Email, emailSubject, emailBody).Wait();
             }
             catch (Exception ex)

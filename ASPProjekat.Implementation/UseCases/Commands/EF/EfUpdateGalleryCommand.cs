@@ -19,7 +19,7 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
             _validator = validator;
         }
 
-        public int Id => 31;
+        public int Id => 54;
 
         public string Name => "Update gallery";
 

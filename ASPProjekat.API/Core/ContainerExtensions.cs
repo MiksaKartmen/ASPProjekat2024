@@ -113,17 +113,31 @@ namespace ASPProjekat.API.Core
 
             services.AddTransient<ICreateMenuItemMealTimeCommand, EfCreateMenuItemMealTimeCommand>();
             services.AddTransient<IDeleteMenuItemMealTimeCommand, EfDeleteMenuItemMealTimeCommand>();
+            services.AddTransient<IUpdateMenuItemMealTimeCommand, EfUpdateMenuItemMealTimeCommand>();
             services.AddTransient<CreateMenuItemMealTimeDtoValidator>();
             services.AddTransient<DeleteMenuItemMealTimeDtoValidator>();
+            services.AddTransient<UpdateMenuItemMealTimeDtoValidator>();
+
+            services.AddTransient<IGetReservationsQuery, EfGetReservationsQuery>();
+            services.AddTransient<IGetOneReservationQuery, EfGetOneReservationQuery>();
+            services.AddTransient<IDeleteReservationCommand, EfDeleteReservationCommand>();
+            services.AddTransient<ICreateReservationCommand, EfCreateReservationCommand>();
+            services.AddTransient<IUpdateReservationCommand, EfUpdateReservationCommand>();
+            services.AddTransient<DeleteReservationDtoValidator>();
+            services.AddTransient<CreateReservationDtoValidator>();
+            services.AddTransient<UpdateReservationDtoValidator>();
+
 
             services.AddTransient<IUseCaseLogger, EfUseCaseLogger>();
             services.AddTransient<IExceptionLogger, ConsoleExceptionLogger>();
 
             services.AddTransient<ILogger, DbExceptionLogger>();
+            
+
             services.AddTransient<UseCaseHandler>();
 
             services.AddTransient<IEmailService>(provider =>
-                new EmailService("smtp.gmail.com", 587, "mihajlo.jovanovic.52.21@ict.edu.rs", "fmhjphukwclcgeab"));
+                new EmailService("smtp.gmail.com", 587, "mihajlojovanovic41@gmail.com", "vgat axxg ddlg ninn"));
         }
         public static Guid? GetTokenId(this HttpRequest request)
         {
