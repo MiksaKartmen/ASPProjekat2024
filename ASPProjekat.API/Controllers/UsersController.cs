@@ -38,7 +38,6 @@ namespace ASPProjekat.API.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        [Authorize]
         public IActionResult Post([FromBody] CreateUserDto dto, ICreateUserCommand command)
         {
             _handler.HandleCommand(command, dto);

@@ -92,8 +92,8 @@ namespace ASPProjekat.Implementation.UseCases.Commands.EF
 
             try
             {
-                var emailSubject = "Welcome to AspProjekat2024!";
-                var emailBody = $"Dear {user.Name},\n\nThank you for registering with us.\n\nBest regards,\nAspProjekat Team";
+                var emailSubject = "Welcome to AspProjekat 2024";
+                var emailBody = $"Dear {user.Name},\n\nThank you for registering with us.\n\nBest regards, AspProjekat Team\n\n";
                 _emailService.SendEmailAsync(user.Email, emailSubject, emailBody).Wait();
             }
             catch (Exception ex)
